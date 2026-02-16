@@ -1,0 +1,27 @@
+---
+layout: base.njk
+---
+
+<header class="article-header">
+    {% if category %}<span class="category">{{ category }}</span>{% endif %}
+    <h1>{{ title }}</h1>
+    <div class="meta">
+        <span class="author">{{ site.author }}</span>
+        <span class="divider"></span>
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+        {% if readTime %}
+        <span class="divider"></span>
+        <span>{{ readTime }} min read</span>
+        {% endif %}
+    </div>
+</header>
+
+<article class="article-body">
+    {{ content | safe }}
+</article>
+
+<div class="article-cta">
+    <h3>Need help figuring out AI for your business?</h3>
+    <p>We evaluate tools, disclose our commissions, and recommend what actually works.</p>
+    <a href="{{ site.url }}/#contact" class="btn">Request a Call</a>
+</div>

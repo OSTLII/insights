@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Insights
+description: Vendor-neutral analysis of AI tools, implementation strategies, and industry shifts. Written by practitioners, not pundits.
+permalink: /insights/
+---
+
+<header class="listing-header">
+    <h1>Insights</h1>
+    <p>Vendor-neutral analysis of AI tools, implementation strategies, and what actually matters for your business.</p>
+</header>
+
+<ul class="post-list">
+{% for post in collections.posts %}
+    <li class="post-item">
+        <a href="{{ post.url }}">
+            {% if post.data.category %}<div class="post-category">{{ post.data.category }}</div>{% endif %}
+            <h2>{{ post.data.title }}</h2>
+            <p class="post-excerpt">{{ post.data.description or post.templateContent | excerpt }}</p>
+            <span class="post-meta">{{ post.date | readableDate }}{% if post.data.readTime %} &middot; {{ post.data.readTime }} min read{% endif %}</span>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+{% if collections.posts.length == 0 %}
+<div style="max-width: 740px; margin: 2rem auto; padding: 0 2rem; color: #999; text-align: center;">
+    <p>New content coming soon. <a href="{{ site.url }}/#contact" style="color: var(--sage);">Get in touch</a> if you have questions now.</p>
+</div>
+{% endif %}

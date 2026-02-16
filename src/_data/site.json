@@ -1,0 +1,18 @@
+{
+  "title": "Ostlii Agency",
+  "description": "Vendor-neutral AI brokerage for SMBs. The honest broker model.",
+  "url": "https://www.ostlii.com",
+  "author": "Evan Navarro",
+  "authorTitle": "Founder, Ostlii Agency",
+  "email": "Founder@ostlii.com",
+  "phone": "913-999-0950",
+  "location": "Colorado Springs, CO",
+  "colors": {
+    "sage": "#7a8b6f",
+    "gold": "#d4af37",
+    "cream": "#f5f2e8",
+    "dark": "#1a1a1a",
+    "sageDark": "#5e6b55",
+    "sageLight": "#a3b298"
+  }
+}

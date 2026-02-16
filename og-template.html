@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 
+         * OG IMAGE TEMPLATE — Ostlii Agency
+         * 
+         * How to use:
+         * 1. Open this file in a browser
+         * 2. Edit the title text below
+         * 3. Screenshot at exactly 1200x627 pixels
+         *    - Chrome DevTools: Ctrl+Shift+M → set to 1200x627 → screenshot
+         *    - Or use a tool like ShareX / CleanShot
+         * 4. Save as src/assets/img/your-slug-og.png
+         *
+         * Or just use this as a reference for a Canva template.
+         */
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            width: 1200px;
+            height: 627px;
+            overflow: hidden;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        .card {
+            width: 1200px;
+            height: 627px;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle texture */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(122, 139, 111, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+        }
+
+        /* Gold accent line */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #7a8b6f);
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: #7a8b6f;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+        }
+
+        .logo-text {
+            color: #999;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* ── EDIT THIS TITLE ── */
+        .title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 52px;
+            line-height: 1.15;
+            color: #f5f2e8;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            margin-top: 24px;
+            font-size: 18px;
+            color: #888;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bottom-row {
+            position: absolute;
+            bottom: 40px;
+            left: 90px;
+            right: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .author {
+            color: #7a8b6f;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .url {
+            color: #555;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+        <div class="logo-row">
+            <div class="logo-mark">O</div>
+            <span class="logo-text">Ostlii Agency</span>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- EDIT THE TITLE AND SUBTITLE BELOW       -->
+        <!-- ═══════════════════════════════════════ -->
+        
+        <div class="title">Why Your AI Consultant Won't Tell You How They Get Paid</div>
+        <div class="subtitle">The honest broker model for AI implementation</div>
+
+        <div class="bottom-row">
+            <span class="author">Evan Navarro · Founder</span>
+            <span class="url">ostlii.com/insights</span>
+        </div>
+    </div>
+</body>
+</html>

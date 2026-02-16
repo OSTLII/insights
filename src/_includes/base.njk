@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ description or content | excerpt }}">
+    <meta name="author" content="{{ site.author }}">
+    
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="{{ 'article' if layout == 'article.njk' else 'website' }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description or content | excerpt }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:image" content="{{ site.url }}/insights/assets/img/{{ ogImage or 'og-default.png' }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    {% if date %}
+    <meta property="article:published_time" content="{{ date | isoDate }}">
+    {% endif %}
+    <meta property="article:author" content="{{ site.author }}">
+    {% if tags %}
+    {% for tag in tags %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+    {% endif %}
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description or content | excerpt }}">
+    <meta name="twitter:image" content="{{ site.url }}/insights/assets/img/{{ ogImage or 'og-default.png' }}">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage: {{ site.colors.sage }};
+            --gold: {{ site.colors.gold }};
+            --cream: {{ site.colors.cream }};
+            --dark: {{ site.colors.dark }};
+            --sage-dark: {{ site.colors.sageDark }};
+            --sage-light: {{ site.colors.sageLight }};
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            color: var(--dark);
+            background: #fafaf8;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+        }
+        .site-nav a.logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+        }
+        .site-nav a.logo img {
+            height: 32px;
+            width: 32px;
+        }
+        .site-nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .site-nav .nav-links a {
+            text-decoration: none;
+            color: var(--sage-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-nav .nav-links a:hover { color: var(--dark); }
+        .site-nav .nav-links a.cta {
+            background: var(--sage);
+            color: white;
+            padding: 0.5rem 1.1rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .site-nav .nav-links a.cta:hover { background: var(--sage-dark); }
+
+        /* ── ARTICLE HEADER ── */
+        .article-header {
+            max-width: 740px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+        }
+        .article-header .category {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.75rem;
+        }
+        .article-header h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
+            line-height: 1.2;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .article-header .meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.88rem;
+            color: #777;
+        }
+        .article-header .meta .author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .article-header .meta .divider {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        /* ── ARTICLE BODY ── */
+        .article-body {
+            max-width: 740px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+        .article-body p {
+            margin-bottom: 1.4rem;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .article-body h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.6rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--dark);
+        }
+        .article-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 2rem 0 0.75rem;
+            color: var(--dark);
+        }
+        .article-body a {
+            color: var(--sage);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .article-body a:hover { color: var(--sage-dark); }
+        .article-body blockquote {
+            border-left: 3px solid var(--gold);
+            padding: 0.75rem 1.25rem;
+            margin: 1.5rem 0;
+            background: var(--cream);
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+            color: #555;
+        }
+        .article-body ul, .article-body ol {
+            margin: 1rem 0 1.4rem 1.5rem;
+        }
+        .article-body li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .article-body code {
+            background: #f0efe8;
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            font-size: 0.92em;
+        }
+        .article-body pre {
+            background: var(--dark);
+            color: #e0ddd4;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .article-body pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .article-body img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .article-body hr {
+            border: none;
+            border-top: 1px solid #e5e3da;
+            margin: 2.5rem 0;
+        }
+
+        /* ── ARTICLE FOOTER / CTA ── */
+        .article-cta {
+            max-width: 740px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: var(--cream);
+            border: 1px solid #e5e3da;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .article-cta h3 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .article-cta p {
+            color: #666;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        .article-cta a.btn {
+            display: inline-block;
+            background: var(--sage);
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .article-cta a.btn:hover { background: var(--sage-dark); }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid #e5e3da;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        .site-footer a {
+            color: #777;
+            text-decoration: none;
+        }
+        .site-footer a:hover { color: var(--dark); }
+
+        /* ── LISTING PAGE ── */
+        .listing-header {
+            max-width: 740px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+        }
+        .listing-header h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .listing-header p {
+            color: #777;
+            font-size: 1.05rem;
+        }
+        .post-list {
+            max-width: 740px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+            list-style: none;
+        }
+        .post-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e5e3da;
+        }
+        .post-item:first-child { border-top: 1px solid #e5e3da; }
+        .post-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .post-item a:hover h2 { color: var(--sage); }
+        .post-item .post-category {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.4rem;
+        }
+        .post-item h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+            transition: color 0.2s;
+        }
+        .post-item .post-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .post-item .post-meta {
+            font-size: 0.82rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 640px) {
+            .site-nav { padding: 1rem; }
+            .site-nav .nav-links { gap: 0.75rem; }
+            .site-nav .nav-links a { font-size: 0.82rem; }
+            .article-header, .article-body, .article-cta, .listing-header, .post-list { padding: 0 1.25rem; }
+            .site-footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="{{ site.url }}" class="logo">
+            <img src="{{ site.url }}/logo-192.png" alt="Ostlii" width="32" height="32">
+            OSTLII
+        </a>
+        <div class="nav-links">
+            <a href="{{ site.url }}/insights/">Insights</a>
+            <a href="{{ site.url }}/academy/">Academy</a>
+            <a href="{{ site.url }}/glossary">Glossary</a>
+            <a href="{{ site.url }}/#contact" class="cta">Get Started</a>
+        </div>
+    </nav>
+
+    {{ content | safe }}
+
+    <footer class="site-footer">
+        <span>&copy; {{ 2026 }} Ostlii LLC. All rights reserved.</span>
+        <span>
+            <a href="{{ site.url }}/privacy-policy">Privacy</a> &middot;
+            <a href="{{ site.url }}/terms-conditions">Terms</a>
+        </span>
+    </footer>
+</body>
+</html>

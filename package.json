@@ -1,0 +1,14 @@
+{
+  "name": "ostlii-insights",
+  "version": "1.0.0",
+  "description": "Ostlii Agency content pipeline — markdown to branded articles with OG tags",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve",
+    "new": "node scripts/new-post.js"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.0.0"
+  }
+}

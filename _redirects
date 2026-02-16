@@ -1,0 +1,35 @@
+# ═══════════════════════════════════════════════════════
+# AFFILIATE REDIRECT LINKS
+# ═══════════════════════════════════════════════════════
+# Format: /go/toolname → actual affiliate URL
+# Update these when you get approved for partner programs.
+# Placeholder URLs below — replace with your actual tracking links.
+#
+# Benefits of this approach:
+# - One place to update if a partner changes their URL
+# - You own the click data (Netlify analytics)
+# - Clean branded links for articles and social
+# - Can A/B test landing pages later
+# ═══════════════════════════════════════════════════════
+
+# Tier 1 — Direct, recurring
+/go/gohighlevel      https://www.gohighlevel.com/?fp_ref=YOURID    302!
+/go/ghl              https://www.gohighlevel.com/?fp_ref=YOURID    302!
+/go/hubspot          https://www.hubspot.com/?ref=YOURID            302!
+
+# Tier 2 — PartnerStack routed
+/go/jobber           https://getjobber.com/?via=YOURID              302!
+/go/monday           https://monday.com/?via=YOURID                 302!
+/go/zapier           https://zapier.com/?via=YOURID                 302!
+/go/make             https://make.com/?via=YOURID                   302!
+/go/clickfunnels     https://clickfunnels.com/?cf_affiliate=YOURID  302!
+
+# Tier 3 — One-time referral
+/go/buildertrend     https://buildertrend.com/?ref=YOURID           302!
+/go/servicetitan     https://servicetitan.com/?ref=YOURID            302!
+/go/procore          https://procore.com/?ref=YOURID                 302!
+
+# ═══════════════════════════════════════════════════════
+# SITE REDIRECTS
+# ═══════════════════════════════════════════════════════
+/insights/*          /insights/:splat                                200
